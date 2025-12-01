@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFL | Home</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+    }
+
+    header {
+      background: #161b22;
+      padding: 20px 40px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #58a6ff;
+      margin-right: 20px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .game-link {
+      display: block;
+      padding: 12px 0;
+      font-size: 18px;
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    .game-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>AFL</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stats.html">Stats</a>
+      <a href="games.html">Games</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+      <h2>Countdown to the AFL Regular Season</h2>
+
+      <div class="card">
+        <div class="countdown" style="font-size: 24px; font-weight: 600;">
+          Loading countdown...
+        </div>
+      </div>
+
+    <h2>Latest Games</h2>
+
+    <div class="card">
+      <a class="game-link" href="game.html?id=2025-03-01">November 16 — AFL Game 3</a>
+      <a class="game-link" href="game.html?id=2025-03-08">November 11 — AFL Veterans Day Game</a>
+      <a class="game-link" href="game.html?id=2025-03-15">November 9 — AFL Game 1</a>
+    </div>
+
+    <h2>Season Overview</h2>
+
+    <div class="card">
+      <p>Season 1 of the AFL begins January 18, 2026.</p>
+      <p>Return after the first game to view stats, play-by-plays, and more.</p>
+    </div>
+
+  </div>
+
+    <script>
+        const nextGameDate = new Date("Jan 18, 2026 14:00:00").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeRemaining = nextGameDate - now;
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            countdownElement.textContent = `Next game in ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
